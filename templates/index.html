@@ -17,7 +17,7 @@
   <form action="/add" method="POST" clas="mb-4">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Ingrese su nombre</label>
-    <input type="text" class="form-control" name="name"placeholder="Ingrese su nombre">
+    <input type="text" class="form-control" name="name"placeholder="Ingrese su nombre" required>
    
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Correo electronico</label>
@@ -26,6 +26,14 @@
   
   <button type="submit" class="btn btn-primary">Registrarse</button>
 </form>
+
+</center>
+<h1>BUSQUEDA DE REGISTRO</h1>
+<form action="/search" method="GET" class="d-flex">
+    <input type="text" class="form-control me-2" name="q" placeholder="Buscar. . ." value="{{ busqueda or '' }}">
+    <button class="btn btn-outline-success" type="submit">Buscar</button>
+</form>
+
 
 <table class="table">
   <thead>
@@ -44,7 +52,7 @@
       <td>{{ u[2] }}</td>
       <td>
        <a href="/edit/{{ u[0] }}" class="btn btn-success">Editar</a>
-       <a href="/delete/{{ u[0] }}" class="btn btn-warning">Eliminar</a>
+       <a href="/delete/{{ u[0] }}" class="btn btn-warning" onclick="return confirm('¿Estas seguro de que quieres eliminar este registro?');">Eliminar</a>
       </td>
     </tr>
     {% endfor %}
